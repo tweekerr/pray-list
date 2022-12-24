@@ -1,0 +1,478 @@
+﻿@page "/"
+@using ChurchPrayList.Extensions
+@using System.Text
+@inject IJSRuntime _jsRuntime
+@inject Blazored.LocalStorage.ILocalStorageService _localStorage
+
+<div class="wrapper @_listState">
+<h1 class="text-center" style="color: white; padding-top: 30px">Генератор локачинської цепочки молитов v2.2</h1>
+<div class="container">
+<table class="col-8 table table-dark table-striped">
+<thead class="thead-dark">
+<tr>
+    <th scope="col" style="width:20px">№</th>
+    <th scope="col">Година</th>
+    <th scope="col">Ім'я та Прізвище</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+    <th scope="row">1</th>
+    <td>00:00-00:30</td>
+    <td>
+        <input value="@_names[0]" @oninput="async (e) => await SetItem((string) e.Value, 0)">
+    </td>
+</tr>
+<tr>
+    <th scope="row">2</th>
+    <td>00:30-01:00</td>
+    <td>
+        <input value="@_names[1]" @oninput="async (e) => await SetItem((string) e.Value, 1)">
+    </td>
+</tr>
+<tr>
+    <th scope="row">3</th>
+    <td>01:00-01:30</td>
+    <td>
+        <input value="@_names[2]" @oninput="async (e) => await SetItem((string) e.Value, 2)">
+    </td>
+</tr>
+<tr>
+    <th scope="row">4</th>
+    <td>01:30-02:00</td>
+    <td>
+        <input value="@_names[3]" @oninput="async (e) => await SetItem((string) e.Value, 3)">
+    </td>
+</tr>
+<tr>
+    <th scope="row">5</th>
+    <td>02:00-02:30</td>
+    <td>
+        <input value="@_names[4]" @oninput="async (e) => await SetItem((string) e.Value, 4)">
+    </td>
+</tr>
+<tr>
+    <th scope="row">6</th>
+    <td>02:30-03:00</td>
+    <td>
+        <input value="@_names[5]" @oninput="async (e) => await SetItem((string) e.Value, 5)">
+    </td>
+</tr>
+<tr>
+    <th scope="row">7</th>
+    <td>03:00-03:30</td>
+    <td>
+        <input value="@_names[6]" @oninput="async (e) => await SetItem((string) e.Value, 6)">
+    </td>
+</tr>
+<tr>
+    <th scope="row">8</th>
+    <td>03:30-04:00</td>
+    <td>
+        <input value="@_names[7]" @oninput="async (e) => await SetItem((string) e.Value, 7)">
+    </td>
+</tr>
+<tr>
+    <th scope="row">9</th>
+    <td>04:00-04:30</td>
+    <td>
+        <input value="@_names[8]" @oninput="async (e) => await SetItem((string) e.Value, 8)">
+    </td>
+</tr>
+<tr>
+    <th scope="row">10</th>
+    <td>04:30-05:00</td>
+    <td>
+        <input value="@_names[9]" @oninput="async (e) => await SetItem((string) e.Value, 9)">
+    </td>
+</tr>
+<tr>
+    <th scope="row">11</th>
+    <td>05:00-05:30</td>
+    <td>
+        <input value="@_names[10]" @oninput="async (e) => await SetItem((string) e.Value, 10)">
+    </td>
+</tr>
+<tr>
+    <th scope="row">12</th>
+    <td>05:30-06:00</td>
+    <td>
+        <input value="@_names[11]" @oninput="async (e) => await SetItem((string) e.Value, 11)">
+    </td>
+</tr>
+<tr>
+    <th scope="row">13</th>
+    <td>06:00-06:30</td>
+    <td>
+        <input value="@_names[12]" @oninput="async (e) => await SetItem((string) e.Value, 12)">
+    </td>
+</tr>
+<tr>
+    <th scope="row">14</th>
+    <td>06:30-07:00</td>
+    <td>
+        <input value="@_names[13]" @oninput="async (e) => await SetItem((string) e.Value, 13)">
+    </td>
+</tr>
+<tr>
+    <th scope="row">15</th>
+    <td>07:00-07:30</td>
+    <td>
+        <input value="@_names[14]" @oninput="async (e) => await SetItem((string) e.Value, 14)">
+    </td>
+</tr>
+<tr>
+    <th scope="row">16</th>
+    <td>07:30-08:00</td>
+    <td>
+        <input value="@_names[15]" @oninput="async (e) => await SetItem((string) e.Value, 15)">
+    </td>
+</tr>
+<tr>
+    <th scope="row">17</th>
+    <td>08:00-08:30</td>
+    <td>
+        <input value="@_names[16]" @oninput="async (e) => await SetItem((string) e.Value, 16)">
+    </td>
+</tr>
+<tr>
+    <th scope="row">18</th>
+    <td>08:30-09:00</td>
+    <td>
+        <input value="@_names[17]" @oninput="async (e) => await SetItem((string) e.Value, 17)">
+    </td>
+</tr>
+<tr>
+    <th scope="row">19</th>
+    <td>09:00-09:30</td>
+    <td>
+        <input value="@_names[18]" @oninput="async (e) => await SetItem((string) e.Value, 18)">
+    </td>
+</tr>
+<tr>
+    <th scope="row">20</th>
+    <td>09:30-10:00</td>
+    <td>
+        <input value="@_names[19]" @oninput="async (e) => await SetItem((string) e.Value, 19)">
+    </td>
+</tr>
+<tr>
+    <th scope="row">21</th>
+    <td>10:00-10:30</td>
+    <td>
+        <input value="@_names[20]" @oninput="async (e) => await SetItem((string) e.Value, 20)">
+    </td>
+</tr>
+<tr>
+    <th scope="row">22</th>
+    <td>10:30-11:00</td>
+    <td>
+        <input value="@_names[21]" @oninput="async (e) => await SetItem((string) e.Value, 21)">
+    </td>
+</tr>
+<tr>
+    <th scope="row">23</th>
+    <td>11:00-11:30</td>
+    <td>
+        <input value="@_names[22]" @oninput="async (e) => await SetItem((string) e.Value, 22)">
+    </td>
+</tr>
+<tr>
+    <th scope="row">24</th>
+    <td>11:30-12:00</td>
+    <td>
+        <input value="@_names[23]" @oninput="async (e) => await SetItem((string) e.Value, 23)">
+    </td>
+</tr>
+<tr>
+    <th scope="row">25</th>
+    <td>12:00-12:30</td>
+    <td>
+        <input value="@_names[24]" @oninput="async (e) => await SetItem((string) e.Value, 24)">
+    </td>
+</tr>
+<tr>
+    <th scope="row">26</th>
+    <td>12:30-13:00</td>
+    <td>
+        <input value="@_names[25]" @oninput="async (e) => await SetItem((string) e.Value, 25)">
+    </td>
+</tr>
+<tr>
+    <th scope="row">27</th>
+    <td>13:00-13:30</td>
+    <td>
+        <input value="@_names[26]" @oninput="async (e) => await SetItem((string) e.Value, 26)">
+    </td>
+</tr>
+<tr>
+    <th scope="row">28</th>
+    <td>13:30-14:00</td>
+    <td>
+        <input value="@_names[27]" @oninput="async (e) => await SetItem((string) e.Value, 27)">
+    </td>
+</tr>
+<tr>
+    <th scope="row">29</th>
+    <td>14:00-14:30</td>
+    <td>
+        <input value="@_names[28]" @oninput="async (e) => await SetItem((string) e.Value, 28)">
+    </td>
+</tr>
+<tr>
+    <th scope="row">30</th>
+    <td>14:30-15:00</td>
+    <td>
+        <input value="@_names[29]" @oninput="async (e) => await SetItem((string) e.Value, 29)">
+    </td>
+</tr>
+<tr>
+    <th scope="row">31</th>
+    <td>15:00-15:30</td>
+    <td>
+        <input value="@_names[30]" @oninput="async (e) => await SetItem((string) e.Value, 30)">
+    </td>
+</tr>
+<tr>
+    <th scope="row">32</th>
+    <td>15:30-16:00</td>
+    <td>
+        <input value="@_names[31]" @oninput="async (e) => await SetItem((string) e.Value, 31)">
+    </td>
+</tr>
+<tr>
+    <th scope="row">33</th>
+    <td>16:00-16:30</td>
+    <td>
+        <input value="@_names[32]" @oninput="async (e) => await SetItem((string) e.Value, 32)">
+    </td>
+</tr>
+<tr>
+    <th scope="row">34</th>
+    <td>16:30-17:00</td>
+    <td>
+        <input value="@_names[33]" @oninput="async (e) => await SetItem((string) e.Value, 33)">
+    </td>
+</tr>
+<tr>
+    <th scope="row">35</th>
+    <td>17:00-17:30</td>
+    <td>
+        <input value="@_names[34]" @oninput="async (e) => await SetItem((string) e.Value, 34)">
+    </td>
+</tr>
+<tr>
+    <th scope="row">36</th>
+    <td>17:30-18:00</td>
+    <td>
+        <input value="@_names[35]" @oninput="async (e) => await SetItem((string) e.Value, 35)">
+    </td>
+</tr>
+<tr>
+    <th scope="row">37</th>
+    <td>18:00-18:30</td>
+    <td>
+        <input value="@_names[36]" @oninput="async (e) => await SetItem((string) e.Value, 36)">
+    </td>
+</tr>
+<tr>
+    <th scope="row">38</th>
+    <td>18:30-19:00</td>
+    <td>
+        <input value="@_names[37]" @oninput="async (e) => await SetItem((string) e.Value, 37)">
+    </td>
+</tr>
+<tr>
+    <th scope="row">39</th>
+    <td>19:00-19:30</td>
+    <td>
+        <input value="@_names[38]" @oninput="async (e) => await SetItem((string) e.Value, 38)">
+    </td>
+</tr>
+<tr>
+    <th scope="row">40</th>
+    <td>19:30-20:00</td>
+    <td>
+        <input value="@_names[39]" @oninput="async (e) => await SetItem((string) e.Value, 39)">
+    </td>
+</tr>
+<tr>
+    <th scope="row">41</th>
+    <td>20:00-20:30</td>
+    <td>
+        <input value="@_names[40]" @oninput="async (e) => await SetItem((string) e.Value, 40)">
+    </td>
+</tr>
+<tr>
+    <th scope="row">42</th>
+    <td>20:30-21:00</td>
+    <td>
+        <input value="@_names[41]" @oninput="async (e) => await SetItem((string) e.Value, 41)">
+    </td>
+</tr>
+<tr>
+    <th scope="row">43</th>
+    <td>21:00-21:30</td>
+    <td>
+        <input value="@_names[42]" @oninput="async (e) => await SetItem((string) e.Value, 42)">
+    </td>
+</tr>
+<tr>
+    <th scope="row">44</th>
+    <td>21:30-22:00</td>
+    <td>
+        <input value="@_names[43]" @oninput="async (e) => await SetItem((string) e.Value, 43)">
+    </td>
+</tr>
+<tr>
+    <th scope="row">45</th>
+    <td>22:00-22:30</td>
+    <td>
+        <input value="@_names[44]" @oninput="async (e) => await SetItem((string) e.Value, 44)">
+    </td>
+</tr>
+<tr>
+    <th scope="row">46</th>
+    <td>22:30-23:00</td>
+    <td>
+        <input value="@_names[45]" @oninput="async (e) => await SetItem((string) e.Value, 45)">
+    </td>
+</tr>
+<tr>
+    <th scope="row">47</th>
+    <td>23:00-23:30</td>
+    <td>
+        <input value="@_names[46]" @oninput="async (e) => await SetItem((string) e.Value, 46)">
+    </td>
+</tr>
+<tr>
+    <th scope="row">48</th>
+    <td>23:30-00:00</td>
+    <td>
+        <input value="@_names[47]" @oninput="async (e) => await SetItem((string) e.Value, 47)">
+    </td>
+</tr>
+</tbody>
+</table>
+<div class="container">
+    <div class="col-md-12 text-center d-flex flex-column align-items-center">
+        <button class="btn btn-primary" @onclick="NamesSubmit">Сформувати список :)</button>
+        <button class="btn btn-danger" @onclick="ClearData">Очистити список х</button>
+        <button class="btn btn-warning @CopyButton" @onclick="CopyToClipboard">Копіювати</button>
+    </div>
+    <div class="d-flex justify-content-center" style="white-space: pre-wrap; margin-top: 19px">
+        <p class="col-md-6" Id="Bogdanka">@_result</p>
+    </div>
+</div>
+
+<div class="container">
+    <div class="col-md-12 text-center d-flex flex-column align-items-center">
+        <a href="/info"><img alt="wrong" src="images/tweeker.png" height="69px"/></a>
+    </div>
+</div>
+
+</div>
+</div>
+
+@code{
+
+    protected override async Task OnInitializedAsync()
+    {
+        _time = DateTime.Parse("00:00");
+        _result = string.Empty;
+        InitializeList();
+        await FillListAsync();
+
+        _listState = CheckListState() ? "animation" : string.Empty;
+        
+        _daysOfWeek = new Dictionary<string, string>
+        {
+            {"Monday", "Понеділок"},
+            {"Tuesday", "Вівторок"},
+            {"Wednesday", "Середа"},
+            {"Thursday", "Четвер"},
+            {"Friday", "П'ятниця"},
+            {"Saturday", "Субота"},
+            {"Sunday", "Неділя"}
+        };
+    }
+
+    private DateTime _time;
+    private List<string> _names;
+    private Dictionary<string, string> _daysOfWeek;
+    private string _result;
+    private string _listState;
+
+    private string CopyButton => _result == "" ? "visually-hidden" : "";
+
+    private string GetTime()
+    {
+        var from = $"{_time.Hour.ToString().FixedStr(2, '0')}:{_time.Minute.ToString().FixedStr(2, '0')}";
+        var toTime = _time.AddMinutes(30);
+        var to = $"{toTime.Hour.ToString().FixedStr(2, '0')}:{toTime.Minute.ToString().FixedStr(2, '0')}";
+        return $"{from}-{to}";
+    }
+
+    private async Task NamesSubmit()
+    {
+        StringBuilder builder = new StringBuilder();
+        var date = DateTime.Now.AddDays(1);
+        builder.AppendLine($"{_daysOfWeek[date.DayOfWeek.ToString()]} " +
+                           $"{date.Day.ToString().FixedStr(2, '0')}" +
+                           $".{date.Month.ToString().FixedStr(2, '0')}");
+        foreach (var name in _names)
+        {
+            builder.AppendLine($"{GetTime()} {name}");
+            _time = _time.AddMinutes(30);
+        }
+
+        _result = builder.ToString();
+        await CopyToClipboard();
+    }
+
+    private void InitializeList()
+    {
+        _names = new List<string>();
+        for (var i = 0; i < 48; i++)
+            _names.Add("");
+    }
+
+    private async Task FillListAsync()
+    {
+        for (var i = 0; i < 48; i++)
+            _names[i] = await _localStorage.GetItemAsync<string>($"name{i}");
+    }
+
+    private async Task SetItem(string item, int index)
+    {
+        _names[index] = item;
+        await _localStorage.SetItemAsync($"name{index}", item);
+
+        if (CheckListState())
+        {
+            _listState = "animation";
+            return;
+        }
+        _listState = string.Empty;
+    }
+
+    private async Task CopyToClipboard()
+    {
+        await _jsRuntime.InvokeVoidAsync("navigator.clipboard.writeText", _result);
+    }
+
+    private async Task ClearData()
+    {
+        for (var i = 0; i < 48; i++)
+        {
+            await _localStorage.RemoveItemAsync($"name{i}");
+            _names[i] = string.Empty;
+        }
+        _result = string.Empty;
+        _listState = string.Empty;
+    }
+
+    private bool CheckListState() => _names.TrueForAll(name => !string.IsNullOrEmpty(name));
+
+}

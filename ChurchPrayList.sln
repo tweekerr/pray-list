@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChurchPrayList", "ChurchPrayList\ChurchPrayList.csproj", "{7518460A-D279-46DE-8E4F-8C2FBF4E79B0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChurchTests", "ChurchTests\ChurchTests.csproj", "{29A6E54B-C7FA-42A0-BA26-AF61424B6EF0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7518460A-D279-46DE-8E4F-8C2FBF4E79B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7518460A-D279-46DE-8E4F-8C2FBF4E79B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7518460A-D279-46DE-8E4F-8C2FBF4E79B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7518460A-D279-46DE-8E4F-8C2FBF4E79B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{29A6E54B-C7FA-42A0-BA26-AF61424B6EF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29A6E54B-C7FA-42A0-BA26-AF61424B6EF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29A6E54B-C7FA-42A0-BA26-AF61424B6EF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29A6E54B-C7FA-42A0-BA26-AF61424B6EF0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
